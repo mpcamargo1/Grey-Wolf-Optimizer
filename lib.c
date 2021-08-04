@@ -46,8 +46,8 @@ void initialize(GWO *gwo){
 
 
 	gwo->alpha = elitism(gwo,FLT_MAX);
-	gwo->beta = elitism(gwo,function(gwo->wolves[gwo->alpha]));
-	gwo->delta = elitism(gwo,function(gwo->wolves[gwo->beta]));
+	gwo->beta = elitism(gwo,fitness(gwo->wolves[gwo->alpha]));
+	gwo->delta = elitism(gwo,fitness(gwo->wolves[gwo->beta]));
 	
 	memcpy(gwo->alphaPos,gwo->wolves[gwo->alpha],sizeof gwo->wolves[gwo->alpha]);
 	memcpy(gwo->betaPos,gwo->wolves[gwo->beta],sizeof gwo->wolves[gwo->beta]);
@@ -119,11 +119,11 @@ double fitness(double *x){
 double function(double *x){
 	// return  100*pow(x[1] - pow(x[0],3),2) + pow(1 - x[0],2);		    // Leon Function
 	//return pow(pow(x[0],2) + x[1]- 11,2) + pow(x[0] + pow(x[1],2) - 7,2);  // Himmelblau Function
-	//  return  pow(10,5)*pow(x[0],2) + pow(x[1],2) - pow(pow(x[0],2) + pow(x[1],2),2) + pow(10,-5)*pow(pow(x[0],2) + pow(x[1],2),4); 	//Deckkers-Aarts Function
+	  return  pow(10,5)*pow(x[0],2) + pow(x[1],2) - pow(pow(x[0],2) + pow(x[1],2),2) + pow(10,-5)*pow(pow(x[0],2) + pow(x[1],2),4); 	//Deckkers-Aarts Function
 	// return 0.26*(pow(x[0],2) + pow(x[1],2)) - 0.48*x[0]*x[1];                 // Matyas Function
 	// return pow(x[0] + 10,2) + pow(x[1] + 10,2) + exp(-pow(x[0],2)-pow(x[1],2)); // Brent  Function
 	// return pow(1.5 - x[0] + x[0]*x[1],2) + pow(2.25 - x[0] + x[0]*pow(x[1],2),2) + pow(2.625 -x[0] + x[0]*pow(x[1],3),2); //Beale Function
-	 return 100*(sqrt(fabs(x[1] - 0.01*pow(x[0],2)))) + 0.01*fabs(x[0] + 10);	// Bukin N. 6 Function
+	// return 100*(sqrt(fabs(x[1] - 0.01*pow(x[0],2)))) + 0.01*fabs(x[0] + 10);	// Bukin N. 6 Function
 	
 }
 
