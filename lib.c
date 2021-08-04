@@ -56,19 +56,16 @@ void initialize(GWO *gwo){
 }
 
 int elitism(GWO *gwo,float found_maximum){
-	// Inicializa o valor máximo com o primeiro valor de Result
 	float maximum=fitness(gwo->wolves[0]);	
 	int i, index_maximum=0;															
 		for(i=1;i<AGENT;i++){
 			if( fitness(gwo->wolves[i]) > maximum && fitness(gwo->wolves[i]) < found_maximum){
-				// Guarda o índice do valor máximo
 				index_maximum = i;
-				// Atualiza o valor mínimo 
 				maximum = fitness(gwo->wolves[i]);										
 			}
 		
 	}
-	// Retorna o índice do valor máximo (Corresponde ao indivíduo)
+	
 	return index_maximum;													
 }
 
