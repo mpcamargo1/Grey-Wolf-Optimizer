@@ -86,6 +86,9 @@ void update_wolves(GWO *gwo){
 			memcpy(gwo->betaPos,gwo->wolves[aux_index_alpha],sizeof gwo->wolves[aux_index_alpha]);
 			memcpy(gwo->deltaPos,gwo->wolves[aux_index_beta],sizeof gwo->wolves[aux_index_beta]);
 			
+			gwo->alpha = i;
+                        gwo->beta = gwo->alpha;
+                        gwo->delta = gwo->beta;			
 
 		}
 		else if(result > fitness(gwo->betaPos) && result < fitness(gwo->alphaPos)){
@@ -94,6 +97,9 @@ void update_wolves(GWO *gwo){
 			
 			memcpy(gwo->betaPos,gwo->wolves[i],sizeof gwo->wolves[i]);
 			memcpy(gwo->deltaPos,gwo->wolves[aux_index_beta],sizeof gwo->wolves[aux_index_beta]);
+			
+			gwo->beta = i;
+                        gwo->delta = gwo->beta;
 			
 		}
 		else if (result > fitness(gwo->deltaPos) && result < fitness(gwo->betaPos)){
