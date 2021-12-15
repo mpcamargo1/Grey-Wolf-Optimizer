@@ -125,7 +125,7 @@ double function(double *x){
 }
 
 double update_a(int iteration){
-	return 2 -(iteration*(2/MAX_IT-1));
+	return 2-((double) iteration*(2/((double) MAX_IT-1)));
 
 }	
 
